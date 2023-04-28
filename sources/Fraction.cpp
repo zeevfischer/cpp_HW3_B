@@ -105,27 +105,6 @@ namespace ariel
         Fraction f_num(num1);
         return fraction1 / f_num;
     }
-    // float Fraction +-*/
-    // Fraction operator+ (const float num1,const Fraction& fraction1)
-    // {
-    //     Fraction f_num(num1);
-    //     return fraction1 + f_num;
-    // }
-    // Fraction operator- (const float num1,const Fraction& fraction1)
-    // {
-    //     Fraction f_num(num1);
-    //     return fraction1 - f_num;
-    // }
-    // Fraction operator* (const float num1,const Fraction& fraction1)
-    // {
-    //     Fraction f_num(num1);
-    //     return fraction1 * f_num;
-    // }
-    // Fraction operator/ (const float num1,const Fraction& fraction1)
-    // {
-    //     Fraction f_num(num1);
-    //     return fraction1 / f_num;
-    // }
     // Fraction Fraction == != > < >= <=
     bool operator==(const Fraction& fraction1, const Fraction& fraction2)
     {
@@ -278,112 +257,39 @@ namespace ariel
         }
         return false;
     }
-    // float Fraction == != > < >= <=
-    // bool operator==(const float num1, const Fraction& fraction1)
-    // {
-    //     Fraction f_num(num1);
-    //     f_num.gcd();
-    //     Fraction temp(fraction1.numerator,fraction1.denominator);
-    //     temp.gcd();
-    //     if(temp.numerator == f_num.numerator && temp.denominator == f_num.denominator)// && (double)temp == (double)f_num)
-    //     {
-    //         return true;
-    //     }
-    //     return false;
-    // }
-    // bool operator!=(const float num1, const Fraction& fraction1)
-    // {
-    //     Fraction f_num(num1);
-    //     f_num.gcd();
-    //     Fraction temp(fraction1.numerator,fraction1.denominator);
-    //     temp.gcd();
-    //     if(temp.numerator != f_num.numerator && temp.denominator != f_num.denominator)// && (double)temp != (double)f_num)
-    //     {
-    //         return true;
-    //     }
-    //     return false;
-    // }
-    // bool operator>(const float num1, const Fraction& fraction1)
-    // {
-    //     Fraction f_num(num1);
-    //     f_num.gcd();
-    //     Fraction temp(fraction1.numerator,fraction1.denominator);
-    //     temp.gcd();
-    //     if(temp.numerator > f_num.numerator && temp.denominator > f_num.denominator)// && (double)temp > (double)f_num)
-    //     {
-    //         return true;
-    //     }
-    //     return false;
-    // }
-    // bool operator<(const float num1, const Fraction& fraction1)
-    // {
-    //     Fraction f_num(num1);
-    //     f_num.gcd();
-    //     Fraction temp(fraction1.numerator,fraction1.denominator);
-    //     temp.gcd();
-    //     if(temp.numerator < f_num.numerator && temp.denominator < f_num.denominator)// && (double)temp < (double)f_num)
-    //     {
-    //         return true;
-    //     }
-    //     return false;
-    // }
-    // bool operator>=(const float num1, const Fraction& fraction1)
-    // {
-    //     Fraction f_num(num1);
-    //     f_num.gcd();
-    //     Fraction temp(fraction1.numerator,fraction1.denominator);
-    //     temp.gcd();
-    //     if(temp.numerator >= f_num.numerator && temp.denominator >= f_num.denominator)// && (double)temp >= (double)f_num)
-    //     {
-    //         return true;
-    //     }
-    //     return false;
-    // }
-    // bool operator<=(const float num1, const Fraction& fraction1)
-    // {
-    //     Fraction f_num(num1);
-    //     f_num.gcd();
-    //     Fraction temp(fraction1.numerator,fraction1.denominator);
-    //     temp.gcd();
-    //     if(temp.numerator <= f_num.numerator && temp.denominator <= f_num.denominator)// && (double)temp <= (double)f_num)
-    //     {
-    //         return true;
-    //     }
-    //     return false;
-    // }
-
-    // prefix //this++
+    // prefix //++this
     Fraction& Fraction::operator++()
     {
         this->numerator += this->denominator;
         this->gcd();
         return *this;
     }
-    // postfix //++this
+    // postfix //this++
     Fraction Fraction::operator++(int)
     {
         Fraction temp = *this;
         this->numerator += this->denominator;
+        this->gcd();
         return temp;
     }
-    // prefix //this++
+    // prefix //++this
     Fraction& Fraction::operator--()
     {
-        this->numerator += this->denominator;
+        this->numerator -= this->denominator;
         this->gcd();
         return *this;
     }
-    // postfix //++this
+    // postfix //this++
     Fraction Fraction::operator--(int)
     {
         Fraction temp = *this;
         this->numerator -= this->denominator;
+        this->gcd();
         return temp;
     }
     istream& operator>>(istream& is, Fraction& fraction)
     {
-        char c;
-        is >> fraction.numerator >> c >> fraction.denominator;
+        is >> fraction.numerator >> fraction.denominator;
         return is;
     }
     ostream& operator<<(ostream& os, const Fraction& fraction)

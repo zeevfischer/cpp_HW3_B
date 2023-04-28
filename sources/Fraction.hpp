@@ -22,6 +22,7 @@ namespace ariel
             when a float will apear first this will turn it into a fraction
             then it will send it to the operator of fraction x fraction 
         */
+       // float conversion constructor
         Fraction(float num);
         // destructor
         ~Fraction();
@@ -37,11 +38,6 @@ namespace ariel
         friend Fraction operator* (const Fraction& fraction1, const float num1);
         friend Fraction operator/ (const Fraction& fraction1, const float num1);
 
-        // friend Fraction operator+ (const float num1,const Fraction& fraction1); 
-        // friend Fraction operator- (const float num1,const Fraction& fraction1);
-        // friend Fraction operator* (const float num1,const Fraction& fraction1);
-        // friend Fraction operator/ (const float num1,const Fraction& fraction1);
-
         friend bool operator==(const Fraction& fraction1, const Fraction& fraction2);
         friend bool operator!=(const Fraction& fraction1, const Fraction& fraction2);
         friend bool operator>(const Fraction& fraction1, const Fraction& fraction2);
@@ -56,13 +52,6 @@ namespace ariel
         friend bool operator>=(const Fraction& fraction1, const float num1);
         friend bool operator<=(const Fraction& fraction1, const float num1);
 
-        // friend bool operator==(const float num1, const Fraction& fraction1);
-        // friend bool operator!=(const float num1, const Fraction& fraction1);
-        // friend bool operator>(const float num1, const Fraction& fraction1);
-        // friend bool operator<(const float num1, const Fraction& fraction1);
-        // friend bool operator>=(const float num1, const Fraction& fraction1);
-        // friend bool operator<=(const float num1, const Fraction& fraction1);
-
         Fraction& operator++(); // prefix
         Fraction operator++(int); // postfix
         Fraction& operator--(); // prefix
@@ -70,9 +59,6 @@ namespace ariel
 
         friend istream& operator>>(istream& is, Fraction& fraction);
         friend ostream& operator<<(ostream& os, const Fraction& fraction);//good
-
-        // conversion constructor
-        // Fraction(int num): Fraction(num, 1) { }
 
         // operator double() const {
         //     // cout << "converting Fraction to double" << endl;
