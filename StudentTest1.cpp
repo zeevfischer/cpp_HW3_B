@@ -105,6 +105,7 @@ TEST_CASE("Division by zero throws an exception") {
 TEST_CASE("Fraction < comparison operator") {
     Fraction a(1, 2);
     Fraction b(1, 4);
+    
     CHECK(b < a);
     CHECK_FALSE(b >= a); 
     CHECK(0.3 < a);
@@ -213,7 +214,7 @@ TEST_CASE("Prefix and postfix decrement operators on Fraction class") {
     CHECK(c.getDenominator() == 2);
 }
 
-TEST_CASE("Output and Input Stream Operators") {////////////////////////////////////////////////////
+TEST_CASE("Output and Input Stream Operators") {
     Fraction a(1, 2), b(3, 4);
     ostringstream os;
 

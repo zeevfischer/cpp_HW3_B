@@ -1,10 +1,3 @@
-/**
- * Demo file for the exercise on binary tree
- *
- * @author Evgeny Hershkovitch Neiterman
- * @since 2023-03
- */
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -32,6 +25,4 @@ int main() {
     cout << "c >=b ? : " << (c >= b) << endl;
     if (a > 1.1) cout << " a is bigger than 1.1" << endl;
     else cout << " a is smaller than 1.1" << endl;
-
-
 }

@@ -18,6 +18,12 @@ run: test1 test2
 demo: Demo.o $(OBJECTS) 
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
+main: Main.o $(OBJECTS) 
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+my_test: TestRunner.o Test.o  $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
 test1: TestRunner.o StudentTest1.o  $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
@@ -39,4 +45,4 @@ $(OBJECT_PATH)/%.o: $(SOURCE_PATH)/%.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
 clean:
-	rm -f $(OBJECTS) *.o test* demo*
+	rm -f $(OBJECTS) *.o test* demo* main* my_test*
