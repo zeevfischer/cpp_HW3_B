@@ -24,9 +24,8 @@ namespace ariel
             when a float will apear first this will turn it into a fraction
             then it will send it to the operator of fraction x fraction 
         */
-       // float conversion constructor
+        // float conversion constructor
         Fraction(float num);
-        // destructor
         void gcd();
         // overloaded operators
         friend Fraction operator+ (const Fraction& fraction1, const Fraction& fraction2);
@@ -34,24 +33,12 @@ namespace ariel
         friend Fraction operator* (const Fraction& fraction1, const Fraction& fraction2);
         friend Fraction operator/ (const Fraction& fraction1, const Fraction& fraction2);
 
-        friend Fraction operator+ (const Fraction& fraction1, float num1);
-        friend Fraction operator- (const Fraction& fraction1, float num1);
-        friend Fraction operator* (const Fraction& fraction1, float num1);
-        friend Fraction operator/ (const Fraction& fraction1, float num1);
-
         friend bool operator==(const Fraction& fraction1, const Fraction& fraction2);
         friend bool operator!=(const Fraction& fraction1, const Fraction& fraction2);
         friend bool operator>(const Fraction& fraction1, const Fraction& fraction2);
         friend bool operator<(const Fraction& fraction1, const Fraction& fraction2);
         friend bool operator>=(const Fraction& fraction1, const Fraction& fraction2);
         friend bool operator<=(const Fraction& fraction1, const Fraction& fraction2);
-
-        friend bool operator==(const Fraction& fraction1, float num1);
-        friend bool operator!=(const Fraction& fraction1, float num1);
-        friend bool operator>(const Fraction& fraction1, float num1);
-        friend bool operator<(const Fraction& fraction1, float num1);
-        friend bool operator>=(const Fraction& fraction1, float num1);
-        friend bool operator<=(const Fraction& fraction1, float num1);
 
         Fraction& operator++(); // prefix
         Fraction operator++(int); // postfix
@@ -61,12 +48,8 @@ namespace ariel
         friend istream& operator>>(istream& Istream, Fraction& fraction);
         friend ostream& operator<<(ostream& Ostream, const Fraction& fraction);
 
-        // operator float() const {
-        //     int num = float(this->numerator)*1000;
-        //     int den = float(this->denominator)*1000;
-        //     return float(num) / float(den);
-        // }
         float fraction_to_float(Fraction& fraction);
+
         operator string() const {
             return to_string(this->numerator)+"/"+to_string(this->denominator);
         }

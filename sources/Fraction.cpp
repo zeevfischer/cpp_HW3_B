@@ -34,7 +34,7 @@ namespace ariel
     {
         float num = fraction.getNumerator();
         float den = fraction.getDenominator();
-        int temp = (num/den) * 1000;
+        int temp = (num/den) * 1000; //4635
         return float(temp)/1000;
     }
     //Note this will be numerator/denominator
@@ -192,28 +192,6 @@ namespace ariel
         Fraction temp(fraction2.denominator ,fraction2.numerator);
         return fraction1 * temp;
     }
-    ////////////////////////////////////// Fraction float +-*/
-    Fraction operator+ (const Fraction& fraction1, const float num1)
-    {
-        Fraction f_num(num1);
-        return fraction1 + f_num;
-    }
-    Fraction operator- (const Fraction& fraction1, const float num1)
-    {
-        Fraction f_num(num1);
-        return fraction1 - f_num;
-    }
-    Fraction operator* (const Fraction& fraction1, const float num1)
-    {
-        Fraction f_num(num1);
-        return fraction1 * f_num;
-    }
-    Fraction operator/ (const Fraction& fraction1, const float num1)
-    {
-        // no need to check devision by zero the / operator for fraction fraction will check that
-        Fraction f_num(num1);
-        return fraction1 / f_num;
-    }
     ////////////////////////////////////// Fraction Fraction == != > < >= <=
     bool operator==(const Fraction& fraction1, const Fraction& fraction2)
     {
@@ -238,7 +216,7 @@ namespace ariel
         Fraction temp2(fraction2.numerator,fraction2.denominator);
         temp2.gcd();
 
-        if(temp1.numerator != temp2.numerator || temp1.denominator != temp2.denominator)// && (double)temp1 != (double)temp2)
+        if(temp1.numerator != temp2.numerator || temp1.denominator != temp2.denominator)
         {
             return true;
         }
@@ -328,126 +306,6 @@ namespace ariel
         }
         return false;
     }
-    // Fraction float == != > < >= <=
-    bool operator==(const Fraction& fraction1, const float num1)
-    {
-        Fraction f_num(num1);
-        f_num.gcd();
-        Fraction temp(fraction1.numerator,fraction1.denominator);
-        temp.gcd();
-
-        // cout << fraction_to_float(temp) << endl;
-        if(temp.numerator == f_num.numerator && temp.denominator == f_num.denominator)
-        {
-            return true;
-        }
-        else if(fraction_to_float(temp) == num1)
-        {
-            return true;
-        }
-        return false;
-    }
-    bool operator!=(const Fraction& fraction1, const float num1)
-    {
-        Fraction f_num(num1);
-        f_num.gcd();
-        Fraction temp(fraction1.numerator,fraction1.denominator);
-        temp.gcd();
-        if(temp.numerator != f_num.numerator || temp.denominator != f_num.denominator)
-        {
-            return true;
-        }
-        return false;
-    }
-    bool operator>(const Fraction& fraction1, const float num1)
-    {
-        Fraction f_num(num1);
-        if(fraction1.denominator == f_num.denominator)
-        {
-            if(fraction1.numerator > f_num.numerator)
-            {
-                return true;
-            }
-        }
-        else
-        {
-            int temp1_numerator = fraction1.numerator*f_num.denominator;
-            int temp2_numerator = f_num.numerator*fraction1.denominator;
-
-            if(temp1_numerator > temp2_numerator)
-            {
-                return true;
-            }
-        }
-        return false;
-
-    }
-    bool operator<(const Fraction& fraction1, const float num1)
-    {
-        Fraction f_num(num1);
-        if(fraction1.denominator == f_num.denominator)
-        {
-            if(fraction1.numerator < f_num.numerator)
-            {
-                return true;
-            }
-        }
-        else
-        {
-            int temp1_numerator = fraction1.numerator*f_num.denominator;
-            int temp2_numerator = f_num.numerator*fraction1.denominator;
-
-            if(temp1_numerator < temp2_numerator)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    bool operator>=(const Fraction& fraction1, const float num1)
-    {
-        Fraction f_num(num1);
-        if(fraction1.denominator == f_num.denominator)
-        {
-            if(fraction1.numerator >= f_num.numerator)
-            {
-                return true;
-            }
-        }
-        else
-        {
-            int temp1_numerator = fraction1.numerator*f_num.denominator;
-            int temp2_numerator = f_num.numerator*fraction1.denominator;
-
-            if(temp1_numerator >= temp2_numerator)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    bool operator<=(const Fraction& fraction1, const float num1)
-    {
-        Fraction f_num(num1);
-        if(fraction1.denominator == f_num.denominator)
-        {
-            if(fraction1.numerator <= f_num.numerator)
-            {
-                return true;
-            }
-        }
-        else
-        {
-            int temp1_numerator = fraction1.numerator*f_num.denominator;
-            int temp2_numerator = f_num.numerator*fraction1.denominator;
-
-            if(temp1_numerator <= temp2_numerator)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
     // prefix //++this
     Fraction& Fraction::operator++()
     {
@@ -496,6 +354,10 @@ namespace ariel
         {
             if(c == '/' || c == ',')
             {
+                if(den == 0)
+                {
+                    throw runtime_error("invalid input");
+                }
                 Fraction temp(num,den);
                 fraction.numerator = temp.numerator;
                 fraction.denominator = temp.denominator;
